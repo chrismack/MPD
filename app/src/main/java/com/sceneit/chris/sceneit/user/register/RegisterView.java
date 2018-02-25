@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.sceneit.chris.sceneit.MainModel;
 import com.sceneit.chris.sceneit.R;
 
-public class RegisterView extends AppCompatActivity implements RegisterContract.IRegisterView{
+public class RegisterView extends AppCompatActivity implements RegisterContract.IRegisterView {
 
     private RegisterPresenter presenter;
     private static final MainModel mainModel = MainModel.getInstance();
@@ -59,7 +59,7 @@ public class RegisterView extends AppCompatActivity implements RegisterContract.
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
+                        if (task.isSuccessful()) {
                             mainModel.setCurrentUser(auth.getCurrentUser());
                             presenter.finish();
                         } else {

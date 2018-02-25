@@ -8,17 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.sceneit.chris.sceneit.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link BlankFragment.OnFragmentInteractionListener} interface
+ * {@link HomeFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link BlankFragment#newInstance} factory method to
+ * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFragment extends Fragment {
+public class HomeFragment extends Fragment implements OnMapReadyCallback {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,7 +37,10 @@ public class BlankFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public BlankFragment() {
+    private MapView mMap;
+    private GoogleMap mGoogleMap;
+
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +50,11 @@ public class BlankFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
+     * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlankFragment newInstance(String param1, String param2) {
-        BlankFragment fragment = new BlankFragment();
+    public static HomeFragment newInstance(String param1, String param2) {
+        HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +75,15 @@ public class BlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+        mMap = (MapView) rootView.findViewById(R.id.home_map);
+        if (mMap != null) {
+            mMap.onCreate(null);
+            mMap.onResume();
+            mMap.getMapAsync(this);
+        }
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -91,6 +109,40 @@ public class BlankFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        MapsInitializer.initialize(getContext());
+
+        mGoogleMap = googleMap;
+
+        // Add a marker in Sydney, Australia, and move the camera.
+        LatLng sydney = new LatLng(-34, 151);
+        mGoogleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+//    public boolean mayRequestContacts() {
+//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+//            return true;
+//        }
+//        if (getActivity().checkSelfPermission(ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+//            return true;
+//        }
+//        if (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)) {
+//            Snackbar.make(homeMap, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
+//                    .setAction(android.R.string.ok, new View.OnClickListener() {
+//                        @Override
+//                        @TargetApi(Build.VERSION_CODES.M)
+//                        public void onClick(View v) {
+//                            requestPermissions(new String[]{ACCESS_FINE_LOCATION}, 0);
+//                        }
+//                    });
+//        } else {
+//            requestPermissions(new String[]{ACCESS_FINE_LOCATION}, 0);
+//        }
+//        return false;
+//    }
 
     /**
      * This interface must be implemented by activities that contain this

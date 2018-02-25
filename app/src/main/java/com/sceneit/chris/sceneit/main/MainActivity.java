@@ -1,14 +1,12 @@
 package com.sceneit.chris.sceneit.main;
 
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,12 +18,11 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.sceneit.chris.sceneit.R;
-import com.sceneit.chris.sceneit.main.home.BlankFragment;
-import com.sceneit.chris.sceneit.main.home.TestFragment;
+import com.sceneit.chris.sceneit.main.home.HomeFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        TestFragment.OnFragmentInteractionListener, BlankFragment.OnFragmentInteractionListener{
+        HomeFragment.OnFragmentInteractionListener {
 
     private FrameLayout fragmentContainer;
 
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity
                 return;
             }
 
-            TestFragment firstFragment = new TestFragment();
+            HomeFragment firstFragment = new HomeFragment();
 
             getSupportFragmentManager()
                     .beginTransaction()
@@ -92,6 +89,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         FragmentManager manager = getSupportFragmentManager();
+
         Fragment fragment = null;
         String backTag = "";
 
@@ -102,19 +100,15 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-            fragment = new TestFragment();
+            fragment = new HomeFragment();
             transaction.addToBackStack("HOME");
         } else if (id == R.id.nav_profile) {
-            fragment = new BlankFragment();
+            fragment = new HomeFragment();
             transaction.addToBackStack("PROFILE");
         } else if (id == R.id.nav_camera) {
-            fragment = new TestFragment();
         } else if (id == R.id.nav_gallery) {
-            fragment = new TestFragment();
         } else if (id == R.id.nav_Help) {
-            fragment = new TestFragment();
         } else if (id == R.id.nav_logout) {
-            fragment = new TestFragment();
         }
 
         if(fragment != null) {
