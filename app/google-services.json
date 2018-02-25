@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "704723392950",
+    "firebase_url": "https://mpdfirebaseproject.firebaseio.com",
+    "project_id": "mpdfirebaseproject",
+    "storage_bucket": "mpdfirebaseproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704723392950:android:a156a766dca653e9",
+        "android_client_info": {
+          "package_name": "com.sceneit.chris.sceneit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704723392950-n9k0665riol9j670bu3b2lq7p59atd6d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sceneit.chris.sceneit",
+            "certificate_hash": "ad68b82426d3571b997205e56da603126db59e4b"
+          }
+        },
+        {
+          "client_id": "704723392950-9qf2arqictu57hkejn09nhsb99jrk1li.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEdAYrkwDfVh0hFA2JvWygLCA2D2nil-0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704723392950-9qf2arqictu57hkejn09nhsb99jrk1li.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
