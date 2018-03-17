@@ -12,6 +12,8 @@ public interface RegisterContract {
         boolean isPasswordSetValid(String password, String confirmation);
 
         void finish();
+
+        void setupUser();
     }
 
     interface IRegisterView {

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorSecondaryDark"
+    android:backgroundTint="@color/colorSecondaryDark"
     android:orientation="vertical"
     tools:context="com.sceneit.chris.sceneit.main.home.HomeFragment">
 
@@ -10,11 +12,14 @@
         android:id="@+id/home_map"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:backgroundTint="@color/colorSecondaryDark" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorSecondaryDark"
+        android:elevation="5dp"
         android:orientation="horizontal">
 
         <ImageButton
@@ -22,24 +27,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/profile"
-            android:src="@drawable/ic_person_black_24dp" />
+            android:src="@drawable/ic_person_black_24dp"
+            android:tint="@color/colorSecondary" />
 
         <ImageButton
             android:id="@+id/home_camera_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/camera"
-            android:src="@drawable/ic_menu_camera" />
+            android:src="@drawable/ic_menu_camera"
+            android:tint="@color/colorSecondary" />
 
         <ImageButton
             android:id="@+id/home_gallery_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/gallery"
-            android:src="@drawable/ic_menu_gallery" />
+            android:src="@drawable/ic_menu_gallery"
+            android:tint="@color/colorSecondary" />
     </LinearLayout>
 
 

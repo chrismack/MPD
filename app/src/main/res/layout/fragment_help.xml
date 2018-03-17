@@ -1,0 +1,97 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorSecondaryDark"
+    tools:context="com.sceneit.chris.sceneit.HelpFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_title"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textColor="@color/colorSecondary" />
+
+        <CheckBox
+            android:id="@+id/set_login_cb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorSecondary"
+            android:contentDescription="@string/login_auto"
+            android:text="@string/login_auto"
+            android:textColor="@color/colorSecondary" />
+
+        <CheckBox
+            android:id="@+id/set_heatmap_cb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorSecondary"
+            android:contentDescription="@string/show_heatmap"
+            android:text="@string/show_heatmap"
+            android:textColor="@color/colorSecondary" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="@string/help_title"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textColor="@color/colorSecondary" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/help_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondaryDark"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/set_prev"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="?android:attr/selectableItemBackground"
+                android:backgroundTint="@android:color/transparent"
+                android:contentDescription="@string/prev_help"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                android:tint="@color/colorSecondary" />
+
+            <ImageButton
+                android:id="@+id/set_next"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="?android:attr/selectableItemBackground"
+                android:backgroundTint="@android:color/transparent"
+                android:contentDescription="@string/next_help"
+                android:src="@drawable/ic_arrow_forward_black_24dp"
+                android:tint="@color/colorSecondary" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

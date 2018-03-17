@@ -1,0 +1,169 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorSecondaryDark"
+    tools:context="com.sceneit.chris.sceneit.main.profile.ProfileFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/profile_own"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondaryDark"
+            android:elevation="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/profile_name"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:textColor="@color/colorSecondary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/profile_change_name_btn"
+                android:layout_width="35dp"
+                android:layout_height="41dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@android:color/transparent"
+                android:contentDescription="@string/change_name"
+                android:elevation="0dp"
+                android:src="@android:drawable/ic_menu_send"
+                android:tint="@color/colorSecondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/profile_edit_name"
+                android:layout_width="246dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:focusedByDefault="false"
+                android:hint="@string/profile_username"
+                android:inputType="textPersonName"
+                android:maxLength="15"
+                android:textColor="@color/colorSecondary"
+                android:textColorHighlight="@color/colorSecondary"
+                android:textColorHint="@color/colorSecondary"
+                app:layout_constraintStart_toEndOf="@+id/textView12"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/profile_other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondaryDark"
+            android:elevation="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/profile_name"
+                android:textAppearance="@android:style/TextAppearance.Material.Large"
+                android:textColor="@color/colorSecondary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/profile_username_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:textAppearance="@android:style/TextAppearance.Material.Large"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintStart_toEndOf="@+id/textView11"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/profile_follow_btn"
+                style="@android:style/Widget.Material.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorSecondary"
+                android:text="@string/follow"
+                android:textColor="@color/common_google_signin_btn_text_dark_default"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/profile_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondaryDark"
+            android:elevation="5dp"
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabTextColor="@color/colorSecondary">
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/images" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/following" />
+
+        </android.support.design.widget.TabLayout>
+
+        <ScrollView
+            android:id="@+id/profile_images"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/profile_images_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <ScrollView
+            android:id="@+id/profile_following"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/profile_following_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>

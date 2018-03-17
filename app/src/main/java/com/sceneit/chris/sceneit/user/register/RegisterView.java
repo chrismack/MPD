@@ -1,5 +1,6 @@
 package com.sceneit.chris.sceneit.user.register;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -15,6 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sceneit.chris.sceneit.MainModel;
 import com.sceneit.chris.sceneit.R;
+import com.sceneit.chris.sceneit.user.login.LoginView;
 
 public class RegisterView extends AppCompatActivity implements RegisterContract.IRegisterView {
 
@@ -65,6 +68,7 @@ public class RegisterView extends AppCompatActivity implements RegisterContract.
                         } else {
                             registerSuccess = false;
                             Log.w("", "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(getApplicationContext(), "Error Registering email", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -74,5 +78,12 @@ public class RegisterView extends AppCompatActivity implements RegisterContract.
     @Override
     public void finsih() {
         this.presenter.finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, LoginView.class);
+        startActivity(intent);
     }
 }

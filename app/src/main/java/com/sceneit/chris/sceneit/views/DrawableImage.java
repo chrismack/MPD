@@ -2,12 +2,14 @@ package com.sceneit.chris.sceneit.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.drawable.Drawable;
+import android.provider.MediaStore;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -16,12 +18,13 @@ import android.view.View;
 import com.sceneit.chris.sceneit.R;
 
 /**
- * TODO: document your custom view class.
+ * Heavily based on : https://code.tutsplus.com/tutorials/android-sdk-create-a-drawing-app-touch-interaction--mobile-19202
  */
 public class DrawableImage extends View {
     private Context context;
 
     private Bitmap bitmap;
+    private Bitmap mutableBitmap;
     private Canvas canvas;
 
     private Path path;
@@ -41,6 +44,7 @@ public class DrawableImage extends View {
         this.path = new Path();
         // Make bitmap mutable
         this.bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+        this.mutableBitmap = null;
         this.bitMapPaint = new Paint(Paint.DITHER_FLAG);
 
         this.pointerSettings = new Paint();
@@ -64,15 +68,14 @@ public class DrawableImage extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-
-        Bitmap mutableBitmap = this.bitmap;
+        //TODO: save and re-add paths to canvas
+        mutableBitmap = this.bitmap;
         this.canvas = new Canvas(mutableBitmap);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         canvas.drawBitmap(this.bitmap, 0, 0, this.bitMapPaint);
         canvas.drawPath(this.path, this.paintOptions);
         canvas.drawPath(this.pointerPath, this.pointerSettings);
@@ -156,5 +159,9 @@ public class DrawableImage extends View {
 
     public void disbale() {
         this.disbaled = true;
+    }
+
+    public Bitmap getMutableBitmap() {
+        return this.mutableBitmap;
     }
 }

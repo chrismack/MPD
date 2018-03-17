@@ -1,0 +1,53 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sceneit.chris.sceneit.main.gallery.GalleryPager">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ProgressBar
+        android:id="@+id/gallery_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:visibility="visible" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/gallery_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    </android.support.v4.view.ViewPager>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/gal_pgr_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="@string/next_gal"
+            android:src="@drawable/ic_arrow_forward_black_24dp"
+            android:tint="@color/colorSecondary" />
+
+        <ImageButton
+            android:id="@+id/gal_pgr_prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/gal_pgr_next"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="@string/gal_prev"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:tint="@color/colorSecondary" />
+    </RelativeLayout>
+
+</FrameLayout>

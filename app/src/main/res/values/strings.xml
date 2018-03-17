@@ -28,4 +28,34 @@
     <string name="profile">Profile</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
+    <string name="send_img">Send Image</string>
+    <string name="close_img">Close Image</string>
+    <string name="gallery_image_loading">Gallery Image Loading</string>
+    <string name="user_img">User Image</string>
+    <string name="gallery_image_up">Upvote Image</string>
+    <string name="gallery_image_down">Downvote Image</string>
+    <string name="comment_hint">Leave a comment</string>
+    <string name="send_comment">Submit Comment</string>
+    <string name="image_points">Points: </string>
+    <string name="profile_name">Name:</string>
+    <string name="profile_username">Username</string>
+    <string name="change_name">Change Name</string>
+    <string name="images">Images</string>
+    <string name="following">Following</string>
+    <string name="user">User</string>
+    <string name="username_desc">Users Profile Link</string>
+    <string name="follow">Follow</string>
+    <string name="unfollow">UnFollow</string>
+    <string name="color_select">Select A Colour</string>
+    <string name="tools">Tools</string>
+    <string name="help">Help and Settings</string>
+    <string name="login_auto">Remain Logged In</string>
+    <string name="show_heatmap">Show Image Heatmap</string>
+    <string name="help_title">Help</string>
+    <string name="settings_title">Settings</string>
+    <string name="next_help">Next Help</string>
+    <string name="prev_help">Previous Help</string>
+    <string name="next_gal">Next image</string>
+    <string name="gal_prev">Previous Image</string>
+
 </resources>

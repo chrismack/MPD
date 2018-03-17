@@ -3,6 +3,8 @@ package com.sceneit.chris.sceneit.user.login;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -27,6 +29,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -61,41 +64,57 @@ public class LoginView extends AppCompatActivity implements LoaderCallbacks<Curs
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
-
-        Button mRegisterUser = (Button) findViewById(R.id.email_register_button);
-        mRegisterUser.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                registerUser();
-            }
-        });
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
 
         this.presenter = new LoginPresenter(this);
-        populateAutoComplete();
+
+        boolean autoLog = false;
+        if(mainModel.getAuth().getCurrentUser() != null) {
+            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(mainModel.getAuth().getCurrentUser().getUid(), Context.MODE_PRIVATE);
+
+            autoLog = sharedPreferences.getBoolean(MainModel.REMAIN_LOGGEDIN, true);
+        }
+
+        if(mainModel.getAuth().getCurrentUser() != null && autoLog) {
+            this.presenter.finish();
+        } else {
+            mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+
+            mPasswordView = (EditText) findViewById(R.id.password);
+            mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                    if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
+                        attemptLogin();
+                        return true;
+                    }
+                    return false;
+                }
+            });
+
+            Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+            mEmailSignInButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    attemptLogin();
+                }
+            });
+
+            Button mRegisterUser = (Button) findViewById(R.id.email_register_button);
+            mRegisterUser.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    registerUser();
+                }
+            });
+
+            mLoginFormView = findViewById(R.id.login_form);
+            mProgressView = findViewById(R.id.login_progress);
+
+
+            populateAutoComplete();
+
+        }
+
     }
 
     @Override
@@ -111,6 +130,10 @@ public class LoginView extends AppCompatActivity implements LoaderCallbacks<Curs
     @Override
     protected void onStop() {
         super.onStop();
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 
     private void populateAutoComplete() {
@@ -211,7 +234,7 @@ public class LoginView extends AppCompatActivity implements LoaderCallbacks<Curs
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            mainModel.setCurrentUser(auth.getCurrentUser());
+
                             presenter.finish();
                         } else {
                             mPasswordView.setError(getString(R.string.error_incorrect_password));

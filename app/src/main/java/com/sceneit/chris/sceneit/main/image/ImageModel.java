@@ -20,6 +20,14 @@ public class ImageModel {
     private Paint paintSettings;
     private Bitmap bitmap;
 
+    private double lat, lng;
+
+
+    /*
+     * Check if the image is currently being sent
+     */
+    private boolean sending;
+
 
     public ImageModel(ImagePresenter presenter) {
         this.presenter = presenter;
@@ -33,6 +41,8 @@ public class ImageModel {
         this.paintSettings.setStrokeJoin(Paint.Join.ROUND);
         this.paintSettings.setStrokeCap(Paint.Cap.ROUND);
         this.paintSettings.setStrokeWidth(6);
+
+        this.sending = false;
     }
 
     public Paint getPaintSettings() {
@@ -66,4 +76,30 @@ public class ImageModel {
     public void setDrawableImage(DrawableImage drawableImage) {
         this.drawableImage = drawableImage;
     }
+
+    public boolean isSending() {
+        return sending;
+    }
+
+    public void setSending(boolean sending) {
+        this.sending = sending;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+
+
 }
